@@ -31,6 +31,7 @@ const LoginPage = () => {
             <div>
                 Don't have an account? <Link to='/signup'>Sign Up</Link>
             </div>
+            <div> <Link to='/mainpage'>temporary</Link></div>
         </div>
     );
 };
