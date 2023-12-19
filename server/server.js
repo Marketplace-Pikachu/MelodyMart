@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
-const {productRouter} = require('./routes/products')
-require('./models/productModel');
+const {productRouter} = require('./routes/products');
+require('./models/Model');
+const {userRouter} = require('./routes/users');
 
 const PORT = 3000;
 
 app.use(express.json());
 
 app.use('/products', productRouter);
+
+app.use('/user', userRouter);
 
 app.use((req, res) => res.sendStatus(404));
 

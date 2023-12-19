@@ -1,4 +1,4 @@
-const client = require('../models/productModel.js');
+const client = require('../models/Model.js');
 
 const productController = {
     async getProduct(req, res, next) {
