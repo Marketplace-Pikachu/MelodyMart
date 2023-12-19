@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --hot",
-    "dev": "webpack serve --hot"
+    "dev": "webpack serve --hot",
+    "server": "nodemon server/server.js"
   },
   "author": "",
   "license": "ISC",
