@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, removeItem, setItems } from '../slices/itemsSlice';
+import Item from '../components/Item';
 
 const testItems = [
   {
@@ -50,14 +51,7 @@ const ItemsContainer = () => {
   return (
     <div className='items-container'>
       {items.map((item) => (
-        <div className='item' key={item.id}>
-          <h3>{item.name}</h3>
-          {/* <h4>{item.seller}</h4> */}
-          <h4>{item.description}</h4>
-          <h4>{item.price}</h4>
-          <button onClick={() => handleAddItem(item)}>Add</button>
-          <button onClick={() => handleRemoveItem(item)}>Remove</button>
-        </div>
+        <Item className='item' key={item.id} item={item}/>
       ))}
     </div>
   );

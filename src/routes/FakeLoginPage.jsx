@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../slices/userSlice';
 
-const LoginPage = () => {
+const FakeLoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -58,4 +58,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default FakeLoginPage;

@@ -36,6 +36,10 @@
   }
 
   .items-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
     margin-top: 10px;
     font-size: large;
     font-weight: bold;
@@ -43,4 +47,16 @@
     height: 80vh;
     border: solid pink;
     text-align: center;
+  }
+
+  .item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 0 10px #e6e6e6;
   }
