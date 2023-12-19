@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../slices/userSlice';
 
@@ -8,6 +8,10 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const navigateToMainPage = () => {
+    navigate('/mainpage');
+  };
 
   const handleLogin = async () => {
     fetch('/login', {
@@ -27,6 +31,11 @@ const LoginPage = () => {
       });
   };
 
+  const fakeHandleLogin = () => {
+    dispatch(login({ name: username, balance: 100 }));
+    navigateToMainPage();
+  }
+
   return (
     <div>
       <input
@@ -41,13 +50,9 @@ const LoginPage = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder='Password'
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={fakeHandleLogin}>Login</button>
       <div>
         Don't have an account? <Link to='/signup'>Sign Up</Link>
-      </div>
-      <div>
-        {' '}
-        <Link to='/mainpage'>to MainPage</Link>
       </div>
     </div>
   );
