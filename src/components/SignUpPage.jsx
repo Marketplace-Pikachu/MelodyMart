@@ -13,18 +13,22 @@ const SignUpPage = () => {
         formData.append('username', username);
         formData.append('password', password);
         formData.append('funds', funds);
-        formData.append('profilePicture', profilePicture);
+        if (profilePicture) {
+            formData.append('profilePicture', profilePicture);
+        }
 
-        fetch('/signup', {
+        fetch('/user/signup', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(FormData)
+            body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error ('Response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            //navigate to main dash
+            //Navigate to main dash
         })
         .catch(error => {
             //handle error
