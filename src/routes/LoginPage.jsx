@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../slices/userSlice';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleLogin = async () => {
         fetch('/login', {
@@ -17,6 +20,7 @@ const LoginPage = () => {
         .then(response => response.json())
         .then(data => {
             //navigate to main dash
+            dispatch(login({name: username, balance: data.balance}));
         })
         .catch(error => {
             //handle error
