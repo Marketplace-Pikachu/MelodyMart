@@ -9,6 +9,10 @@ export const itemsSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
+    setItems: (state, action) => {
+      state.totalItems = action.payload.length;
+      state.itemsList = action.payload;
+    },
     addItem: (state, action) => {
       state.totalItems += 1;
       state.itemsList.push(action.payload);
@@ -27,3 +31,7 @@ export const itemsSlice = createSlice({
     },
   },
 });
+
+export const { addItem, removeItem, updateItem, setItems } = itemsSlice.actions;
+
+export default itemsSlice.reducer;

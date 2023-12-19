@@ -19,3 +19,28 @@
     border: solid pink;
     text-align: center;
   }
+
+  .nav-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .filters-field{
+    font-size: large;
+    font-weight: bold;
+    width: 20vw;
+    height: 60vh;
+    border: solid pink;
+    text-align: center;
+  }
+
+  .items-container{
+    margin-top: 10px;
+    font-size: large;
+    font-weight: bold;
+    width: 60vw;
+    height: 80vh;
+    border: solid pink;
+    text-align: center;
+  }
