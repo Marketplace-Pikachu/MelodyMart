@@ -42,13 +42,44 @@ const SignUpPage = () => {
     };
 
     return (
-        <div>
-            <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' />
-            <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' />
-            <input type='number' value={funds} onChange={(e)=> setFunds(e.target.value)} placeholder='Add Funds'/>
-            <input type='text' value={profilePictureUrl} onChange={(e)=> setProfilePictureUrl(e.target.value)} placeholder='Profile Picture URL' />
-            <button onClick={handleSignUp}>Sign Up</button>
-        </div>
+        <div className="signup-container">
+  <div className="signup-form">
+    <div className="logo-container">
+      <img src="MelodyMartLogo.png" alt="Website Logo" className="website-logo" />
+    </div>
+    <h2>Sign Up</h2>
+    <input
+      type="text"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+      placeholder="Username"
+      className="signup-input"
+    />
+    <input
+      type="password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      placeholder="Password"
+      className="signup-input"
+    />
+    <input
+      type="text"
+      value={funds}
+      onChange={(e) => setFunds(e.target.value)}
+      placeholder="Add Funds"
+      className="signup-input"
+    />
+    <input
+      type="text"
+      value={profilePictureUrl}
+      onChange={(e) => setProfilePictureUrl(e.target.value)}
+      placeholder="Profile Picture URL"
+      className="signup-input"
+    />
+    <button onClick={handleSignUp} className="signup-button">Sign Up</button>
+  </div>
+</div>
+
     );
 };
 

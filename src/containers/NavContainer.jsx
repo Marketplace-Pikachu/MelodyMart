@@ -1,6 +1,6 @@
 import React from "react";
 import NameDisplay from "../components/NameDisplay";
-import FiltersField from "../components/FiltersField";
+import FiltersField from "./FiltersField";
 
 const NavContainer = ({ setDisplayMode }) => {
   return (

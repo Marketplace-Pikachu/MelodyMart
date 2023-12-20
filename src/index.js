@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './store.jsx';
+import '../public/style.css';
 
 const root = document.getElementById('root');
 const rootInstance = createRoot(root);

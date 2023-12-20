@@ -11,6 +11,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'], 
+              },
+            {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
@@ -41,5 +45,6 @@ module.exports = {
         port: 9000,
         hot: true,
         open: true,
+        historyApiFallback: true,
       },
 };
