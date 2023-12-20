@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { parse } from 'ipaddr.js';
 
 const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
+  userId: userData.userId || '',
   name: userData.username || '',
-  balance: userData.balance || 0,
+  balance: Number(userData.balance).toFixed(2) || 0,
   cartItems: [],
   purchasedItems: [],
   profilePicture: userData.profilePicture || ''
@@ -14,8 +16,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.name = action.payload.name;
-      state.balance = action.payload.balance;
+      state.userId = action.payload.id;
+      state.name = action.payload.username;
+      state.balance = Number(action.payload.balance);
       state.profilePicture = action.payload.profilePicture;
     },
     logout: (state) => {
@@ -27,13 +30,13 @@ export const userSlice = createSlice({
       localStorage.removeItem('user')
     },
     deposit: (state, action) => {
-      state.balance += Number(action.payload);
+      state.balance += parseFloat(action.payload);
     },
     addToCart: (state, action) => {
       state.cartItems.push(action.payload);
     },
     removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter((item) => item.product_id !== action.payload);
     },
     purchase: (state, action) => {
       state.balance -= action.payload.price;

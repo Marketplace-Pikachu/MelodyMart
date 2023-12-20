@@ -9,6 +9,7 @@ const Item = ({ item }) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(item));
+    alert(`${item.product_title} added to cart`);
   };
 
   return (
