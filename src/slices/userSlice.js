@@ -4,7 +4,7 @@ const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
   userId: userData.userId || '',
   name: userData.username || '',
-  balance: userData.balance || 0,
+  balance: Number(userData.balance).toFixed(2) || 0,
   cartItems: [],
   purchasedItems: [],
   profilePicture: userData.profilePicture || ''
@@ -35,7 +35,7 @@ export const userSlice = createSlice({
       state.cartItems.push(action.payload);
     },
     removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
+      state.cartItems = state.cartItems.filter((item) => item.product_id !== action.payload);
     },
     purchase: (state, action) => {
       state.balance -= action.payload.price;

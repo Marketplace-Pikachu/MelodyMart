@@ -19,11 +19,11 @@ export const itemsSlice = createSlice({
     },
     removeItem: (state, action) => {
       state.totalItems -= 1;
-      state.itemsList = state.itemsList.filter((item) => item.id !== action.payload);
+      state.itemsList = state.itemsList.filter((item) => item.product_id !== action.payload);
     },
     updateItem: (state, action) => {
       state.itemsList = state.itemsList.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item.product_id === action.payload.id) {
           return action.payload;
         }
         return item;
