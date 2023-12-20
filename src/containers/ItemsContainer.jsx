@@ -5,30 +5,6 @@ import Item from '../components/Item';
 import PurchasedItem from '../components/PurchasedItem';
 import CartItem from '../components/CartItem';
 
-const testItems = [
-  {
-    id: 1,
-    seller: 'Adrian',
-    name: 'Item 1',
-    description: 'in good condition',
-    price: 100,
-  },
-  {
-    id: 2,
-    seller: 'Harold',
-    name: 'Item 2',
-    description: 'in good condition',
-    price: 200,
-  },
-  {
-    id: 3,
-    seller: 'Jordan',
-    name: 'Item 3',
-    description: 'in good condition',
-    price: 300,
-  },
-];
-
 const ItemsContainer = ({ mode }) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.items.itemsList);
@@ -37,7 +13,16 @@ const ItemsContainer = ({ mode }) => {
   const cartItems = useSelector((state) => state.user.cartItems);
 
   useEffect(() => {
-    dispatch(setItems(testItems));
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/products/');
+        const data = await response.json();
+        dispatch(setItems(data));
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    }
+    fetchData();
   }, []);
 
   const handleAddItem = (item) => {
@@ -57,7 +42,7 @@ const ItemsContainer = ({ mode }) => {
       <div>
         <div className='items-container'>
           {items.map((item) => (
-            <Item className='item' key={item.id} item={item} />
+            <Item className='item' key={item.product_id} item={item} />
           ))}
         </div>
       </div>
@@ -68,7 +53,7 @@ const ItemsContainer = ({ mode }) => {
       <div>
         <div className='items-container'>
           {cartItems.map((item) => (
-            <CartItem className='item' key={item.id} item={item} />
+            <CartItem className='item' key={item.product_id} item={item} />
           ))}
         </div>
       </div>
@@ -79,7 +64,7 @@ const ItemsContainer = ({ mode }) => {
     <div>
       <div className='items-container'>
         {purchasedItems.map((item) => (
-          <PurchasedItem className='item' key={item.id} item={item} />
+          <PurchasedItem className='item' key={item.product_id} item={item} />
         ))}
       </div>
     </div>
