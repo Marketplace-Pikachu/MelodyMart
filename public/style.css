@@ -56,12 +56,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center; 
     background-color: #f2f2f2;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
     border: 1px solid #e6e6e6;
     box-shadow: 0 0 10px #e6e6e6;
+    overflow: hidden; 
+  }
+
+  .item h3 {
+    white-space: nowrap; /* Prevent text from breaking onto multiple lines */
+    overflow: hidden; /* Hide any content that exceeds the container */
+    text-overflow: ellipsis; /* Show an ellipsis (...) when text is truncated */
+  }
+  
+  .item h4 {
+    max-height: 100px; /* Set a fixed height for the description */
+    overflow: hidden; /* Hide any content that exceeds the height */
   }
 
   ul {
@@ -72,4 +85,9 @@
     overflow: auto;
     background-color: white;
     border: solid pink;
+  }
+
+  .item img {
+    width: 250px;
+    height: 250px;
   }

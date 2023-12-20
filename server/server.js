@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const {productRouter} = require('./routes/products');
 require('./models/Model');
@@ -12,6 +13,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/products', productRouter);
 

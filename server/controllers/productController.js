@@ -37,9 +37,10 @@ const productController = {
                 product_user_id,
                 image_link,
                 entry_date,
+                product_title,
             } = req.body;
 
-            const insertQuery = `INSERT INTO Product (Description, Price, Category, Sold, Seller, product_user_id, image_link, entry_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+            const insertQuery = `INSERT INTO Product (Description, Price, Category, Sold, Seller, product_user_id, image_link, entry_date, product_title) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
             const insertParams = [
                 description, 
                 price, 
@@ -49,6 +50,7 @@ const productController = {
                 product_user_id,
                 image_link,
                 entry_date,
+                product_title,
             ];
 
             const result = await client.query(insertQuery, insertParams);
