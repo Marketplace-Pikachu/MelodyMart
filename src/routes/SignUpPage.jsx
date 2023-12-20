@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [funds, setFunds] = useState(0);
     const [profilePictureUrl, setProfilePictureUrl] = useState('');
+    const navigate = useNavigate();
 
     const handleSignUp = () => {
         
@@ -16,7 +18,7 @@ const SignUpPage = () => {
             profilePicture: profilePictureUrl
         };
 
-        fetch('/user/signup', {
+        fetch('http://localhost:3000/user/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,11 +32,13 @@ const SignUpPage = () => {
             return response.json();
         })
         .then(data => {
-            //Navigate to main dash
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            navigate('/mainpage') // or whatever it's called
         })
         .catch(error => {
-            //handle error
-        })
+            console.error('Error:', error);
+        });
     };
 
     return (

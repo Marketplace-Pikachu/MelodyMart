@@ -31,7 +31,13 @@ const userController = {
             //console.logs
             console.log('result:', result)
 
-            res.locals.userId = result.rows[0].user_id; 
+            const newUser = result.rows[0]; 
+            res.locals.user = {
+                id: newUser.user_id,
+                username: username,
+                funds: funds,
+                profilePicture:profilePicture
+            };
             return next();
         } catch (error) {
             console.error('SQL Error:', error)
@@ -67,7 +73,13 @@ const userController = {
                 });
             }
 
-            res.locals.user = user;
+            const verifiedUser = result.rows[0]; 
+            res.locals.user = {
+                id: verifiedUser.user_id,
+                username: verifiedUser.username,
+                funds: verifiedUser.funds,
+                profilePicture: verifiedUser.profilePicture
+            };
             return next();
         } catch (error) {
             return next({

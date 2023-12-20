@@ -3,8 +3,13 @@ const app = express();
 const {productRouter} = require('./routes/products');
 require('./models/Model');
 const {userRouter} = require('./routes/users');
+const cors = require('cors');
 
 const PORT = 3000;
+
+app.use(cors({
+    origin: 'http://localhost:9000'
+}));
 
 app.use(express.json());
 
