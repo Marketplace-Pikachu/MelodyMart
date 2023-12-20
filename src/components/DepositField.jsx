@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { deposit } from '../slices/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import SellButton from './SellButton';
 
 const DepositField = () => {
   const dispatch = useDispatch();
@@ -14,12 +14,17 @@ const DepositField = () => {
 
   return (
     <div className='deposit-field'>
-      <h2>Balance: {balance}</h2>
-      <input
-        type='number'
-        onChange={(e) => setDepositAmount(Number(e.target.value))}
-      />
-      <button onClick={handleDeposit}>Deposit</button>
+      <div className='sell-button'>
+        <SellButton />
+      </div>
+      <div>
+        <h2>Balance: {balance}</h2>
+        <input
+          type='number'
+          onChange={(e) => setDepositAmount(Number(e.target.value))}
+        />
+        <button onClick={handleDeposit}>Deposit</button>
+      </div>
     </div>
   );
 };
