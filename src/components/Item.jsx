@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { withdraw } from "../slices/userSlice";
+import { purchase } from "../slices/userSlice";
 import { removeItem } from "../slices/itemsSlice";
 
 const Item = ({ item }) => {
@@ -17,7 +17,7 @@ const Item = ({ item }) => {
 
   const handlePerchaseItem = () => {
     dispatch(removeItem(item));
-    dispatch(withdraw(item.price));
+    dispatch(purchase(item));
   };
 
   return (
@@ -26,7 +26,7 @@ const Item = ({ item }) => {
       <h4>{'Seller: ' + item.seller}</h4>
       <h4>{item.description}</h4>
       <h4>{'Price: '+ item.price}</h4>
-      <button onClick={handlePerchaseItem}>Perchace</button>
+      <button onClick={handlePerchaseItem}>Purchace</button>
     </div>
   );
 }

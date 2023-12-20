@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, removeItem, setItems } from '../slices/itemsSlice';
 import Item from '../components/Item';
@@ -29,8 +29,10 @@ const testItems = [
 
 const ItemsContainer = () => {
   const dispatch = useDispatch();
+  const [mode, setMode] = useState(0);
   const items = useSelector((state) => state.items.itemsList);
   const balance = useSelector((state) => state.user.balance);
+  const purchasedItems = useSelector((state) => state.user.purchasedItems);
 
   useEffect(() => {
     dispatch(setItems(testItems));
@@ -48,11 +50,34 @@ const ItemsContainer = () => {
     dispatch(removeItem(item));
   };
 
+  const handleModeChange = () => {
+    if (mode === 0) {
+      setMode(1);
+    } else {
+      setMode(0);
+    }
+  };
+
+  if (mode === 0) {
+    return (
+      <div>
+        <button onClick={handleModeChange}>Purchased Items</button>
+        <div className='items-container'>
+          {items.map((item) => (
+            <Item className='item' key={item.id} item={item} />
+          ))}
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className='items-container'>
-      {items.map((item) => (
-        <Item className='item' key={item.id} item={item}/>
-      ))}
+    <div>
+      <button onClick={handleModeChange}>Items For Sale</button>
+      <div className='items-container'>
+        {purchasedItems.map((item) => (
+          <Item className='item' key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 };

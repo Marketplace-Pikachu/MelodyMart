@@ -60,3 +60,13 @@
     border: 1px solid #e6e6e6;
     box-shadow: 0 0 10px #e6e6e6;
   }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .purchase-modal{
+    overflow: auto;
+    background-color: white;
+    border: solid pink;
+  }
