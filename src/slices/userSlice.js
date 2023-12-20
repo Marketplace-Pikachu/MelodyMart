@@ -4,7 +4,7 @@ const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
   userId: userData.userId || '',
   name: userData.username || '',
-  balance: Number(userData.balance) || 0,
+  balance: Number(userData.balance).toFixed(2) || 0,
   cartItems: [],
   purchasedItems: [],
   profilePicture: userData.profilePicture || ''
