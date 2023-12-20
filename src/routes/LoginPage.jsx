@@ -10,7 +10,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        fetch('/user/login', {
+        fetch('http://localhost:3000/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +24,9 @@ const LoginPage = () => {
             return response.json();
         })
         .then(data => {
-            navigate('/dashboard') // or whatever main dashboard path is
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            navigate('/mainpage') // or whatever it's called
         })
         .catch(error => {
             setError('Failed to login. Please check your username and password.')

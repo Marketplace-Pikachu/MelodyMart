@@ -40,12 +40,6 @@ module.exports = {
         compress: true,
         port: 9000,
         hot: true,
-        liveReload: true,
-        proxy: {
-          '/products': {
-            target: 'http://localhost:3000/',
-            secure: false,
-          },
-        },
+        open: true,
       },
 };
