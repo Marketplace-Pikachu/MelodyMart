@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
-  name: '',
-  balance: 0,
+  name: userData.username || '',
+  balance: userData.balance || 0,
   cartItems: [],
   purchasedItems: [],
+  profilePicture: userData.profilePicture || ''
 };
 
 export const userSlice = createSlice({
@@ -14,13 +16,18 @@ export const userSlice = createSlice({
     login: (state, action) => {
       state.name = action.payload.name;
       state.balance = action.payload.balance;
+      state.profilePicture = action.payload.profilePicture;
     },
     logout: (state) => {
       state.name = '';
       state.balance = 0;
+      state.profilePicture = '';
+      state.cartItems = [];
+      state.purchasedItems = [];
+      localStorage.removeItem('user')
     },
     deposit: (state, action) => {
-      state.balance += action.payload;
+      state.balance += Number(action.payload);
     },
     addToCart: (state, action) => {
       state.cartItems.push(action.payload);

@@ -14,7 +14,7 @@ const userController = {
             console.log('req.body', req.body)
 
             //check to see if profilePic uploaded
-            const profilePicture = req.body.profilePicture || null;
+            const profilePicture = req.body.profilePicture || 'https://picsum.photos/id/237/200/300';
 
             const hashedPassword = await bcyrpt.hash(password, saltRounds);
 
@@ -35,8 +35,8 @@ const userController = {
             res.locals.user = {
                 id: newUser.user_id,
                 username: username,
-                funds: funds,
-                profilePicture:profilePicture
+                balance: funds,
+                profilePicture: profilePicture
             };
             return next();
         } catch (error) {
@@ -77,7 +77,7 @@ const userController = {
             res.locals.user = {
                 id: verifiedUser.user_id,
                 username: verifiedUser.username,
-                funds: verifiedUser.funds,
+                balance: verifiedUser.funds,
                 profilePicture: verifiedUser.profilePicture
             };
             return next();
