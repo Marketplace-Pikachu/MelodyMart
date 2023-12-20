@@ -74,6 +74,7 @@ const userController = {
             }
 
             const verifiedUser = result.rows[0]; 
+            console.log('verifiedUser:', verifiedUser)
             res.locals.user = {
                 id: verifiedUser.user_id,
                 username: verifiedUser.username,

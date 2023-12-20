@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { parse } from 'ipaddr.js';
 
 const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
@@ -17,7 +18,7 @@ export const userSlice = createSlice({
     login: (state, action) => {
       state.userId = action.payload.id;
       state.name = action.payload.username;
-      state.balance = action.payload.balance;
+      state.balance = Number(action.payload.balance);
       state.profilePicture = action.payload.profilePicture;
     },
     logout: (state) => {
@@ -29,7 +30,7 @@ export const userSlice = createSlice({
       localStorage.removeItem('user')
     },
     deposit: (state, action) => {
-      state.balance += Number(action.payload);
+      state.balance += parseFloat(action.payload);
     },
     addToCart: (state, action) => {
       state.cartItems.push(action.payload);
