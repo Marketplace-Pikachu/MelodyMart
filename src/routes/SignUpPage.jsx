@@ -5,21 +5,23 @@ const SignUpPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [funds, setFunds] = useState(0);
-    const [profilePicture, setProfilePicture] = useState('');
+    const [profilePictureUrl, setProfilePictureUrl] = useState('');
 
     const handleSignUp = () => {
         
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append('password', password);
-        formData.append('funds', funds);
-        if (profilePicture) {
-            formData.append('profilePicture', profilePicture);
-        }
+        const signUpInfo = {
+            username,
+            password,
+            funds: parseFloat(funds),
+            profilePicture: profilePictureUrl
+        };
 
         fetch('/user/signup', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(signUpInfo)
         })
         .then(response => {
             if (!response.ok) {
@@ -40,7 +42,7 @@ const SignUpPage = () => {
             <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' />
             <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' />
             <input type='number' value={funds} onChange={(e)=> setFunds(e.target.value)} placeholder='Add Funds'/>
-            <input type='file' onChange={(e)=> setProfilePicture(e.target.files[0])} />
+            <input type='text' value={profilePictureUrl} onChange={(e)=> setProfilePictureUrl(e.target.value)} placeholder='Profile Picture URL' />
             <button onClick={handleSignUp}>Sign Up</button>
         </div>
     );

@@ -5,18 +5,20 @@ const saltRounds = 10;
 const userController = {
     async addUser(req, res, next) {
         try {
-            const {
+            const { 
                 username,
                 password,
                 funds,
-            } = req.body;
+             } = req.body;
+
+            console.log('req.body', req.body)
 
             //check to see if profilePic uploaded
             const profilePicture = req.body.profilePicture || null;
 
             const hashedPassword = await bcyrpt.hash(password, saltRounds);
 
-            const insertQuery = `INSERT INTO User (username, password, funds, profilePicture) VALUES ($1, $2, $3, $4) RETURNING user_id`;
+            const insertQuery = `INSERT INTO Users (username, password, funds, profilePicture) VALUES ($1, $2, $3, $4) RETURNING user_id`;
             const insertParams = [
                 username,
                 hashedPassword,
@@ -25,9 +27,14 @@ const userController = {
             ];
 
             const result = await client.query(insertQuery, insertParams);
+
+            //console.logs
+            console.log('result:', result)
+
             res.locals.userId = result.rows[0].user_id; 
             return next();
         } catch (error) {
+            console.error('SQL Error:', error)
             return next({
                 status: 500,
                 error: error,
