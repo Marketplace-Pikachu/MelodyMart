@@ -14,20 +14,53 @@ const ItemModal = ({ isOpen, handleClose }) => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(
-      addItem({
-        product_id: 1,
-        product_title: title,
+
+    try {
+      const response = await fetch('http://localhost:3000/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          description,
+          price,
+          category,
+          sold: false, 
+          seller: username, 
+          product_user_id: id, 
+          image_link,
+          entry_date: new Date().toISOString(), 
+          product_title: title,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const result = await response.json();
+      console.log('Product added successfully:', result);
+
+      dispatch(addItem({
+        id: result.id, 
+        title,
         description,
         category,
         price,
+        sold: false,
         seller: username,
+        product_user_id: id,
         image_link,
-      })
-    );
-    handleClose();
+        entry_date: new Date().toISOString(),
+      }));
+
+      handleClose();
+  
+    } catch (error) {
+      console.error('Error adding product:', error);
+    }
   };
 
   if (!isOpen) return null;

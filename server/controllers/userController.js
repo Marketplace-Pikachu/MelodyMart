@@ -78,7 +78,7 @@ const userController = {
                 id: verifiedUser.user_id,
                 username: verifiedUser.username,
                 balance: verifiedUser.funds,
-                profilePicture: verifiedUser.profilePicture
+                profilePicture: verifiedUser.profilepicture
             };
             return next();
         } catch (error) {
