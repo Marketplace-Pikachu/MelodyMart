@@ -1,23 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { purchase } from "../slices/userSlice";
-import { removeItem } from "../slices/itemsSlice";
+import { addToCart } from "../slices/userSlice";
+import { removeItem, updateItem } from "../slices/itemsSlice";
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.user.balance);
 
-  const handleAddItem = () => {
-    if (balance >= item.price) {
-      dispatch({ type: "items/addItem", payload: item });
-    } else {
-      alert("Not enough money!");
-    }
-  };
-
-  const handlePerchaseItem = () => {
-    dispatch(removeItem(item));
-    dispatch(purchase(item));
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
   };
 
   return (
@@ -26,7 +17,7 @@ const Item = ({ item }) => {
       <h4>{'Seller: ' + item.seller}</h4>
       <h4>{item.description}</h4>
       <h4>{'Price: '+ item.price}</h4>
-      <button onClick={handlePerchaseItem}>Purchace</button>
+      <button onClick={handleAddToCart}>Add To Cart</button>
     </div>
   );
 }

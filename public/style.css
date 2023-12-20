@@ -12,6 +12,9 @@
   }
 
   .name-display{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: large;
     font-weight: bold;
     width: 20vw;

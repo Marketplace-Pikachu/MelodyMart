@@ -2,10 +2,10 @@ import React from "react";
 import NameDisplay from "../components/NameDisplay";
 import FiltersField from "../components/FiltersField";
 
-const NavContainer = () => {
+const NavContainer = ({ setDisplayMode }) => {
   return (
     <div className='nav-container'>
-      <NameDisplay />
+      <NameDisplay setDisplayMode={setDisplayMode}/>
       <FiltersField />
     </div>
   );
