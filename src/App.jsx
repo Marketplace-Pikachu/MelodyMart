@@ -8,16 +8,13 @@ import LoginPage from './routes/LoginPage';
 const App = () => {
     return (
         <Router>
-            <div>
-                <Routes>
-                    {/* <Route path='/' element={<FakeLoginPage />} /> */}
-                    <Route path='/' element={<LoginPage />} />
-                    <Route path='/signup' element={<SignUpPage />} />
-                    <Route path='/mainpage' element={<MainPage />} />
-                </Routes>
-            </div>
+            <Routes>
+                <Route path='/' element={<LoginPage />} />
+                <Route path='/signup' element={<SignUpPage />} />
+                <Route path='/mainpage' element={<MainPage />} />
+            </Routes>
         </Router>
-    )
+    );
 };
 
 export default App;
