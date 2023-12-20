@@ -1,11 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../slices/userSlice';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -26,6 +30,9 @@ const LoginPage = () => {
         .then(data => {
             localStorage.setItem('user', JSON.stringify(data.user));
 
+            console.log(data.user)
+            dispatch(login(data.user));
+            
             navigate('/mainpage') // or whatever it's called
         })
         .catch(error => {

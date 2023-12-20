@@ -15,7 +15,7 @@ export const itemsSlice = createSlice({
     },
     addItem: (state, action) => {
       state.totalItems += 1;
-      state.itemsList.push(action.payload);
+      state.itemsList.unshift(action.payload);
     },
     removeItem: (state, action) => {
       state.totalItems -= 1;

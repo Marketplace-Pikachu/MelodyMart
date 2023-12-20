@@ -113,6 +113,9 @@ ul {
 }
 
 .modal-content{
+  display:flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   background-color: #f2f2f2;
   width: 50%;
@@ -123,6 +126,11 @@ ul {
   padding: 20px;
   top: 20%;
   left: 20%;
+}
 
-
+.input-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }

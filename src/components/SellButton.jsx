@@ -12,10 +12,6 @@ const SellButton = () => {
   const handleOpen = () => {
       setOpen(true);
   };
-
-  // const toggleForm = () => {  
-  //   setOpen(!open);
-  // };
   
   return (
     <div className="sell-button">
