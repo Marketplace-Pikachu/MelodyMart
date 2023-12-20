@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
+  userId: userData.userId || '',
   name: userData.username || '',
   balance: userData.balance || 0,
   cartItems: [],
@@ -14,7 +15,8 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.name = action.payload.name;
+      state.userId = action.payload.id;
+      state.name = action.payload.username;
       state.balance = action.payload.balance;
       state.profilePicture = action.payload.profilePicture;
     },
