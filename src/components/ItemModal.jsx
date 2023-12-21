@@ -80,6 +80,7 @@ const ItemModal = ({ isOpen, handleClose }) => {
                 type='text'
                 id='title'
                 name='title'
+                className='modal-input'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
@@ -141,8 +142,8 @@ const ItemModal = ({ isOpen, handleClose }) => {
             </span>
             <br></br>
             <span>
-              <button type='submit'>Post</button>
-              <button onClick={handleClose}>Close</button>
+              <button type='submit' className='modal-button'>Post</button>
+              <button onClick={handleClose} className='modal-button'>Close</button>
             </span>
           </form>
         </div>
