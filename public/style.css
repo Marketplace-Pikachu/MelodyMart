@@ -127,6 +127,7 @@ body, html {
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
+  min-width: 150px;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -160,6 +161,7 @@ body, html {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   width: calc(25% - 20px);
   margin-bottom: 20px;
+  min-width: 250px;
 }
 
 .item h4, .item p {
@@ -346,4 +348,18 @@ input[type="number"] {
   color: #4e5d94;
   text-decoration: none;
   font-weight: bold;
+}
+
+.deposit-field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #333
 }

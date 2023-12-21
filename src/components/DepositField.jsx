@@ -17,14 +17,12 @@ const DepositField = () => {
       <div className='sell-button'>
         <SellButton />
       </div>
-      <div>
-        <h2>Balance: {balance}</h2>
+        <h2>Balance: {'$' + balance}</h2>
         <input
           type='number'
           onChange={(e) => setDepositAmount(Number(e.target.value))}
         />
         <button onClick={handleDeposit}>Deposit</button>
-      </div>
     </div>
   );
 };
